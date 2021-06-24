@@ -77,7 +77,7 @@ namespace Business.Concrete
         private IResult CheckStudetnCountForCourseAdd()
         {
             var result = _studentService.GetAllStudent();
-            if (result.Data.Count > 10)
+            if (result.Data.Count < 20)
             {
                 return new SuccessResult();
             }
