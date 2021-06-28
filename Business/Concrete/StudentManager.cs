@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Text;
 using Core.Aspects.Autofac.TransactionScopeAspect;
 using Core.Aspects.Autofac.Performance;
+using Entities.Dtos;
 
 namespace Business.Concrete
 {
@@ -54,6 +55,12 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<Student>>(_studentDal.GetAll(s=>s.StudentName.Contains(studentName)));
         }
+
+        public IDataResult<List<StudentCourseDetail>> GetAllStudentCourseDetail()
+        {
+            return new SuccessDataResult<List<StudentCourseDetail>>(_studentDal.StudentCourseDetail(), Messages.StudentCourseDetailListed);
+        }
+
         [ValidationAspect(typeof(StudentValidator))]
         public IResult UpdateStudent(Student student)
         {

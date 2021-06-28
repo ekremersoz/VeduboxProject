@@ -33,5 +33,9 @@ namespace Business.Constants
         public static string UserAlreadyExists = "Kullanıcı mecvut";
         public static string AccessTokenCreated = "Token oluşturuldu";
         public static string AuthorizationDenied = "Yetkiniz yok";
+        public static string StudentCourseDetailListed = "Öğrenci Kurs Detayları Listelendi";
+        public static string AddedCourseDetail = "Kurs Detayı Eklendi";
+        public static string UpdatedCourseDetail = "Kurs Detayı Güncellendi";
+        public static string ListedCourseDetail = "Kurs Detayı Listelendi";
     }
 }

@@ -45,6 +45,18 @@ namespace WebAPI.Controllers
         }
 
 
+        [HttpGet("GetAllStudentCourseDetail")]
+        public IActionResult GetAllStudentCourseDetail()
+        {
+            var result = _studentService.GetAllStudentCourseDetail();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
         [HttpPost("AddStudent")]
         public IActionResult AddStudent(Student student)
         {

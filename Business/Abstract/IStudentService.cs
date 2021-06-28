@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,6 +15,7 @@ namespace Business.Abstract
         IResult UpdateStudent(Student student);
         IResult DeleteStudent(Student student);
         IResult AddTransactionalTest(Student student);
+        IDataResult<List<StudentCourseDetail>> GetAllStudentCourseDetail();
 
     }
 }
