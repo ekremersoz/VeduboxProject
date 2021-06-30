@@ -12,9 +12,11 @@ using System.Text;
 using Core.Aspects.Autofac.TransactionScopeAspect;
 using Core.Aspects.Autofac.Performance;
 using Entities.Dtos;
+using Business.BusinessAspects.Autofac;
 
 namespace Business.Concrete
 {
+    
     public class StudentManager : IStudentService
     {
         IStudentDal _studentDal;
@@ -23,7 +25,7 @@ namespace Business.Concrete
             _studentDal = studentDal;
         }
 
-
+        [SecuredOperation("admin,teacher")]
         [ValidationAspect(typeof(StudentValidator))]
         [CacheRemoveAspect("IStudentService.GetAllStudent")]
         public IResult AddStudent(Student student)
@@ -39,6 +41,7 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
+        [SecuredOperation("admin")]
         public IResult DeleteStudent(Student student)
         {
             _studentDal.Delete(student);
@@ -46,22 +49,27 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
+        [SecuredOperation("admin,teacher")]
         public IDataResult<List<Student>> GetAllStudent()
         {
             return new SuccessDataResult<List<Student>>(_studentDal.GetAll(),Messages.ListedStudent);
         }
 
+        [SecuredOperation("admin,teacher")]
         public IDataResult<List<Student>> GetStudentsByName(string studentName)
         {
             return new SuccessDataResult<List<Student>>(_studentDal.GetAll(s=>s.StudentName.Contains(studentName)));
         }
 
+        [SecuredOperation("admin,teacher")]
         public IDataResult<List<StudentCourseDetail>> GetAllStudentCourseDetail()
         {
             return new SuccessDataResult<List<StudentCourseDetail>>(_studentDal.StudentCourseDetail(), Messages.StudentCourseDetailListed);
         }
 
+        [SecuredOperation("admin,teacher")]
         [ValidationAspect(typeof(StudentValidator))]
+        [CacheRemoveAspect("IStudentService.GetAllStudent")]
         public IResult UpdateStudent(Student student)
         {
             _studentDal.Update(student);

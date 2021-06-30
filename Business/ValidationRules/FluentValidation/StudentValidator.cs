@@ -11,6 +11,8 @@ namespace Business.ValidationRules.FluentValidation
         public StudentValidator()
         {
             RuleFor(s => s.StudentName).NotEmpty();
+            RuleFor(s => s.Email).NotEmpty();
+            RuleFor(s => s.CourseId).NotEmpty();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -8,6 +9,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
+    
     public class UserManager : IUserService
     {
         IUserDal _userDal;
@@ -17,12 +19,14 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
+        
         public IResult Add(User user)
         {
             _userDal.Add(user);
             return new SuccessResult();
         }
 
+       
         public IResult Delete(User user)
         {
             _userDal.Delete(user);
@@ -49,6 +53,7 @@ namespace Business.Concrete
             return _userDal.GetClaims(user);
         }
 
+        
         public IResult Update(User user)
         {
             _userDal.Update(user);
