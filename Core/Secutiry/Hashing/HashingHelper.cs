@@ -28,7 +28,9 @@ namespace Core.Secutiry.Hashing
                     }
                 }
             }
+
             return true;
         }
     }
 }
+    

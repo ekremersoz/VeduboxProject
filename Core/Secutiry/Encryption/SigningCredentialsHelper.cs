@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Core.Secutiry.Encryption
 {
-    public class SigningCredentialsHelper
+    class SigningCredentialsHelper
     {
-        public static SigningCredentials CreateSigningCredentials(SecurityKey secirityKey)
+        public static SigningCredentials CreateSigningCredentials(SecurityKey securityKey)
         {
-            return new SigningCredentials(secirityKey, SecurityAlgorithms.HmacSha512Signature);
+            return new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha512Signature);
         }
     }
 }

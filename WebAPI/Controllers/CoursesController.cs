@@ -36,6 +36,19 @@ namespace WebAPI.Controllers
 
 
 
+        [HttpGet("GetCourseByCourseId")]
+        public IActionResult GetCourseByCourseId(int courseId)
+        {
+            Thread.Sleep(1000);
+            var result = _courseService.GetCourseByCourseId(courseId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
         [HttpGet("GetAllByCourseName")]
         public IActionResult GetAllByCourseName(string courseName)
         {

@@ -10,6 +10,7 @@ namespace Business.Abstract
     {
         IDataResult<List<Course>> GetAllCourse();
         IDataResult<List<Course>> GetAllByCourseName(string courseName);
+        IDataResult<Course> GetCourseByCourseId(int courseId);
         IDataResult<List<Course>> GetAllCourseByLessThanFee(int fee);
         IDataResult<List<Course>> GetAllCourseByTeacherId(int teacherId);
         IDataResult<List<Course>> GetAllCourseBetweenStartandFinishDate(DateTime startDate, DateTime finishDate);

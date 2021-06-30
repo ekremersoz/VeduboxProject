@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -24,6 +25,7 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(CourseValidator))]
+        [SecuredOperation("course.add,admin")]
         public IResult AddCourse(Course course)
         {
             var result = BusinessRules.Run(CheckStudetnCountForCourseAdd());
@@ -65,6 +67,11 @@ namespace Business.Concrete
         public IDataResult<List<Course>> GetAllCourseByTeacherId(int teacherId)
         {
             return new SuccessDataResult<List<Course>>(_courseDal.GetAll(c=>c.TeacherId == teacherId));
+        }
+
+        public IDataResult<Course> GetCourseByCourseId(int courseId)
+        {
+            return new SuccessDataResult<Course>(_courseDal.Get(c => c.CourseId == courseId));
         }
 
         [ValidationAspect(typeof(CourseValidator))]
